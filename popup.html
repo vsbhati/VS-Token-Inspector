@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VS Token Inspector</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app" role="application" aria-label="VS Token Inspector">
+
+    <header class="header">
+      <img src="icons/vs-logo.png" alt="VSbhati logo" class="logo" width="48" height="48" />
+      <h1 class="title">VS Token Inspector</h1>
+      <p class="subtitle">Quick Bearer Token Access</p>
+    </header>
+
+    <div class="status-card" id="statusCard" aria-live="polite">
+      <span class="status-badge status-badge--idle" id="statusBadge">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Checking token…</span>
+      </span>
+    </div>
+
+    <section class="token-section" aria-labelledby="tokenLabel">
+      <div class="token-section__header">
+        <label id="tokenLabel" class="token-label">Access Token</label>
+        <div class="token-section__actions">
+          <button
+            type="button"
+            class="icon-btn"
+            id="copyInlineBtn"
+            aria-label="Copy token"
+            title="Copy token"
+            disabled
+          >
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="icon-btn"
+            id="toggleVisibilityBtn"
+            aria-label="Show token"
+            aria-pressed="false"
+            title="Show / hide token"
+          >
+          <svg class="icon icon-eye" id="iconEye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <svg class="icon icon-eye-off hidden" id="iconEyeOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="token-display">
+        <textarea
+          id="tokenField"
+          class="token-field"
+          readonly
+          rows="4"
+          placeholder="No bearer token captured yet…"
+          aria-readonly="true"
+        ></textarea>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button type="button" class="btn btn--primary" id="copyBtn" disabled>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+        Copy Token
+      </button>
+
+      <button type="button" class="btn btn--secondary" id="refreshBtn">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <polyline points="23 4 23 10 17 10"/>
+          <polyline points="1 20 1 14 7 14"/>
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+          <path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/>
+        </svg>
+        Refresh
+      </button>
+    </div>
+
+    <section class="info-card" aria-label="Token information">
+      <div class="info-row">
+        <span class="info-label">Token Type</span>
+        <span class="info-value" id="infoType">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Token Length</span>
+        <span class="info-value" id="infoLength">—</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Last Updated</span>
+        <span class="info-value" id="infoUpdated">—</span>
+      </div>
+    </section>
+
+    <footer class="footer">VSbhati © 2026</footer>
+
+    <div class="toast-container" id="toastContainer" aria-live="assertive" aria-atomic="true"></div>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

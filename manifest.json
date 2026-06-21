@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "VS Token Inspector",
+  "version": "1.0.0",
+  "description": "Quick Bearer Token Access",
+  "icons": {
+    "16": "icons/vs-logo.png",
+    "48": "icons/vs-logo.png",
+    "128": "icons/vs-logo.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VS Token Inspector",
+    "default_icon": {
+      "16": "icons/vs-logo.png",
+      "48": "icons/vs-logo.png",
+      "128": "icons/vs-logo.png"
+    }
+  },
+  "permissions": ["storage", "webRequest"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
